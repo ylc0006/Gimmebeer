@@ -23,15 +23,14 @@ Steps:
        --UserScoreTextStyle
          ...
        --UserWeight.tsv
-     --Vis
-       --static
-         ...
-       --templates
-         --beer.html
-         --recommend_by_attr.html
-     --beer_recommend.py
+     --static
+       ...
+     --templates
+       --beer.html
+       --recommend_by_attr.html
+     --application.py
 ```
-4. In terminal, within App folder, run python3 Vis/beer_recommend.py
+4. In terminal, within App folder, run python3 application.py
 5. run http://127.0.0.1:5000/ in browser
 6. exit server by CTL+c
 
