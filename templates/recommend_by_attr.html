@@ -1,0 +1,238 @@
+<html lang="en" class="csstransforms csstransforms3d csstransitions"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSE6242-Team35</title>
+<meta name="description" content="Personal Website">
+<meta name="author" content="CSE6242-Team35">
+
+
+<link rel="shortcut icon" href="static/img/favicon.jpg" type="static/image/x-icon">
+
+
+<script data-module="cloudflare/rocket" id="cfjs_block_554d18cf0a" onload="CloudFlare.__cfjs_block_554d18cf0a_load()" onerror="CloudFlare.__cfjs_block_554d18cf0a_error()" onreadystatechange="CloudFlare.__cfjs_block_554d18cf0a_readystatechange()" type="text/javascript" src="http://www.frenchoverflow.com/cdn-cgi/nexp/dok3v=1613a3a185/cloudflare/rocket.js"></script>
+
+<link rel="stylesheet" type="text/css" href="static/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="static/fonts/font-awesome/css/font-awesome.css">
+
+<link rel="stylesheet" type="text/css" href="static/css/style.css">
+<link rel="stylesheet" type="text/css" href="static/css/prettyPhoto.css">
+<link href="http://fonts.googleapis.com/css?family=Lato:400,700,900,300" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300" rel="stylesheet" type="text/css">
+<script type="text/rocketscript" data-rocketsrc="js/modernizr.custom.js" data-rocketoptimized="true"></script><script type="text/javascript" src="http://www.frenchoverflow.com/js/modernizr.custom.js"></script>
+<script type="text/rocketscript" data-rocketoptimized="true">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85796013-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='beer.css') }}">
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+
+
+<div id="nav" class="affix-top">
+<nav class="navbar navbar-custom">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"> <i class="fa fa-bars"></i> </button>
+<a class="navbar-brand page-scroll" href="#page-top"><font face="Open Sans">Cheers!</font></a> </div>
+
+<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+<ul class="nav navbar-nav">
+
+<li class="hidden"> <a href="#page-top"></a> </li>
+<li> <a class="page-scroll" href="/#about"><font size="2.8"><font face="Open Sans">A Guide to Beer Style</font></font></a> </li>
+<li> <a class="page-scroll" href="/#popularity"><font size="2.8"><font face="Open Sans">Popularity by Style</font></font></a> </li>
+<li> <a class="page-scroll" href="/#recommender"><font size="2.8"><font face="Open Sans">Personalized Recommender</font></font></a> </li>
+<li> <a class="page-scroll" href="/#portfolio"><font size="2.8"><font face="Open Sans">Blogs</font></font></a></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+
+
+<div id="recommender_intro" class="text-center">
+<div class="container">
+<div class="section-title center">
+<h2 style="color: #000;"><font face="Open Sans">Top 10 Recommended Beers</font></h2>
+<p style="color: #000;"><font face="Open Sans"><font size="5">Just for U!</font></font></p>
+</div>
+<div class="row">
+<div class="col-lg-12">
+   <div id="container">
+            <div id="first" style= "width:1000px; height:400px; float: left;"></div>
+            <div id="second" style="width: 350px; float: left;height: 100px;"></div>
+                <!--img alt="wordcloud" src="static/beer.png" /-->
+
+            </div>
+        </div>
+<div class="row">
+<div class="col-md-12 text-center"></div>
+<div class="col-md-8 col-md-offset-2">
+<div class="about-text">
+  <p style="color: #000"><font size="3"> <font face="Open Sans">We are happy to recommend the above 10 beers based on your preferences. Each circle represents a beer. Each color represents a beer style. The size of the circle, the darkness of the gradient color, and the number in each circle reflects the likelihood you may enjoy the beer. We hope you will find that our recommendations meet your interests and preferences. Cheers!</font></font><br><br><br></p>
+</div>
+</div>
+</div>
+
+<script>
+            var graphData = {{ data | safe }}
+
+            // var graphData = [["Ayinger Celebrator Doppelbock", 100, "Bocks",100],
+            // ["Sofie", 94, "Strong Ales", 90],
+            // ["The Abyss", 91, "India Pale Ales", 80],
+            // ["Red Zone", 88, "India Pale Ales",70],
+            // ["Summer Solstice Cerveza Crema", 88, "Strong Ales", 60],
+            // ["Trois Pistoles", 86, "India Pale Ales", 50],
+            // ["OMB Copper", 83, "Bocks", 40],
+            // ["Silent Night", 83, "Bocks", 30],
+            // ["Julius Echter Hefe-Weissbier Hell", 80, "India Pale Ales", 20],
+            // ["Left Hand Milk Stout", 80, "Strong Ales", 10]]
+
+            dataset = {
+            "children": [{"Name": graphData[0][0],"Rating":parseFloat(graphData[0][1]), "Style": graphData[0][2], "Review_count": graphData[0][4]},
+                {"Name":graphData[1][0],"Rating":parseFloat(graphData[1][1]),"Style": graphData[1][2],"Review_count": graphData[1][4]},
+                {"Name":graphData[2][0],"Rating":parseFloat(graphData[2][1]),"Style": graphData[2][2],"Review_count": graphData[2][4]},
+                {"Name":graphData[3][0],"Rating":parseFloat(graphData[3][1]),"Style": graphData[3][2],"Review_count": graphData[3][4]},
+                {"Name":graphData[4][0],"Rating":parseFloat(graphData[4][1]),"Style": graphData[4][2],"Review_count": graphData[4][4]},
+                {"Name":graphData[5][0],"Rating":parseFloat(graphData[5][1]),"Style": graphData[5][2],"Review_count": graphData[5][4]},
+                {"Name":graphData[6][0],"Rating":parseFloat(graphData[6][1]),"Style": graphData[6][2],"Review_count": graphData[6][4]},
+                {"Name":graphData[7][0],"Rating":parseFloat(graphData[7][1]),"Style": graphData[7][2],"Review_count": graphData[7][4]},
+                {"Name":graphData[8][0],"Rating":parseFloat(graphData[8][1]),"Style": graphData[8][2],"Review_count": graphData[8][4]},
+                {"Name":graphData[9][0],"Rating":parseFloat(graphData[9][1]),"Style": graphData[9][2],"Review_count": graphData[9][4]}]
+              };
+            var diameter = 500;
+            var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+            var bubble = d3.pack(dataset)
+                .size([diameter, diameter])
+                // .attr('transform', 'translate('+diameter*0.5+',' + diameter*0 + ')')
+                .padding(1.5);
+
+            var svg = d3.select("#first")
+                .append("svg")
+                .attr("width", diameter)
+                .attr("height", diameter)
+                .attr("class", "bubble")
+                .attr('transform', 'translate('+diameter*0.15+',' + diameter*0 + ')');
+
+            var nodes = d3.hierarchy(dataset)
+                .sum(function(d) { return d.Rating; });
+
+            var node = svg.selectAll(".node")
+                .data(bubble(nodes).descendants())
+                .enter()
+                .filter(function(d){
+                    return  !d.children
+                })
+                .append("g")
+                .attr("class", "node")
+                .attr("transform", function(d) {
+                    return "translate(" + d.x + "," + d.y + ")";
+                });
+
+            // node.append("title")
+            //     .text(function(d) {
+            //         return d.Name + ": " + d.Rating;
+            //     });
+
+            node.append("circle")
+                .attr("r", function(d) {
+                    return d.r;
+                })
+                // .style("fill", d3.rgb("#a50026"))
+                // .style("opacity", 0.5)
+                .style("fill", function(d) {
+                  if (d.data.Style == "Bocks") {return d3.rgb("#a6cee3");}
+                  if (d.data.Style == "Brown Ales") {return d3.rgb("#1f78b4");}
+                  if (d.data.Style == "Dark Ales") {return d3.rgb("#b2df8a");}
+                  if (d.data.Style == "Dark Lagers") {return d3.rgb("#33a02c");}
+                  if (d.data.Style == "Hybrid Beers") {return d3.rgb("#fb9a99");}
+                  if (d.data.Style == "India Pale Ales") {return d3.rgb("#e31a1c");}
+                  if (d.data.Style == "Pale Ales") {return d3.rgb("#fdbf6f");}
+                  if (d.data.Style == "Pilseners and Pale Lagers") {return d3.rgb("#ff7f00");}
+                  if (d.data.Style == "Porters") {return d3.rgb("#cab2d6");}
+                  if (d.data.Style == "Specialty Beers") {return d3.rgb("#6a3d9a");}
+                  if (d.data.Style == "Stouts") {return d3.rgb("#ffff99");}
+                  if (d.data.Style == "Strong Ales") {return d3.rgb("#b15928");}
+                  if (d.data.Style == "Wheat Beers") {return d3.rgb("#00441b");}
+                  if (d.data.Style == "Wild/Sour Beers") {return d3.rgb("#525252");}
+                } )
+                .style("opacity", function(d) {
+                  return (d.data.Review_count);
+                })
+                // .style("fill", function(d,i) {
+                //     return color(i);
+                // })
+               .on("mouseover", function(d) {
+                 tooltip.text(d.data.Name + " -- Rating: " + d.data.Rating/10 +"; Type: "+ d.data.Style + "; Popularity:"+Math.round(d.data.Review_count*100)/100);
+                 tooltip.style("visibility", "visible");
+               })
+               .on("mousemove", function() {
+                 return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+               })
+               .on("mouseout", function() {return tooltip.style("visibility", "hidden");
+               });
+
+            node.append("text")
+                .attr("dy", ".2em")
+                .style("text-anchor", "middle")
+                .text(function(d) {
+                    return d.data.Name.substring(0, d.r / 3);
+                })
+                .attr("font-family", "sans-serif")
+                .attr("font-size", function(d){
+                    return d.r/6;
+                })
+                .attr("fill", "black");
+
+            node.append("text")
+                .attr("dy", "1.3em")
+                .style("text-anchor", "middle")
+                .text(function(d) {
+                    return d.data.Rating/10;
+                })
+                .attr("font-family",  "Gill Sans", "Gill Sans MT")
+                .attr("font-size", function(d){
+                    return d.r/6;
+                })
+                .attr("fill", "black");
+
+            d3.select(self.frameElement)
+                .style("height", diameter + "px");
+
+            var tooltip = d3.select("body")
+                .append("div")
+                .style('position', 'absolute')
+                .style('z-index', '10')
+                .style('visibility', 'hidden')
+                .style('color', 'white')
+                .style('padding', '8px')
+                .style('background-color', 'rgba(0,0,0,0.75)')
+                .style('border-radius', '6px')
+                .style('font', '12 px sans-serif')
+                .text('tooltip');
+
+
+          </script>
+
+<img alt="wordcloud" src="static/beer.png" align="middle">
+<div class="about-text">
+<br><br><p style="color: #000"><font size="3"><font face="Open Sans">Above is a dynamic word cloud that grabs the keywords of reviews from other users who share similar preferences as you. <br><br></font></font></p>
+</div>
+
+<p class="text-center"><a class="btn btn-primary" href="/">Back to Home</a> </p>
+</div>
+</div>
+</div>
+</div>
+</body></html>
