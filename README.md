@@ -12,6 +12,7 @@ Steps:
 1. Download data folder from "https://drive.google.com/drive/folders/1IIiEtVAHG6Wu5GfjwBivjbJ_oWc5Is24?usp=sharing"
 2. Unzip the file and put the data folder within App folder as follow
 3. Structure:
+```
     App
      --data
        --beer_counts.csv
@@ -29,6 +30,7 @@ Steps:
          --beer.html
          --recommend_by_attr.html
      --beer_recommend.py
+```
 4. In terminal, within App folder, run python3 Vis/beer_recommend.py
 5. run http://127.0.0.1:5000/ in browser
 6. exit server by CTL+c
