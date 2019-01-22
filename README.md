@@ -5,8 +5,8 @@ Beer, as one of the oldest drinks humans have produced, dates back to 5000 BC. I
 ## Getting Started
 
 Requirement:
--- OS: Mac OS (Windows is not recommended as it requires virtual server. You can follow instructions in the link to setup python virtual enviornment in order to run Python Flask http://timmyreilly.azurewebsites.net/python-flask-windows-development-environment-setup/ )
--- Software: Python3, Python Flask
+- OS: Mac OS (Windows is not recommended as it requires virtual server. You can follow instructions in the link to setup python virtual enviornment in order to run Python Flask http://timmyreilly.azurewebsites.net/python-flask-windows-development-environment-setup/ )
+- Software: Python3, Python Flask
 
 Steps:
 1. Download data folder from "https://drive.google.com/drive/folders/1IIiEtVAHG6Wu5GfjwBivjbJ_oWc5Is24?usp=sharing"
