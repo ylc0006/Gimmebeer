@@ -2,6 +2,11 @@
 
 Beer, as one of the oldest drinks humans have produced, dates back to 5000 BC. In 2017, the beer market generated US$281 billion revenue worldwide, with total beer consumption over 144 billion liters. There are over 300,000 different beers worldwide, and more than 150 different types are classified according to the Brewers Association. A comprehensive, innovative beer recommendation system would be valuable, especially to beer lovers.
 
+![](images/input.png)
+![](images/bubblechart.png)
+![](images/wordcloud.png)
+
+
 ## Getting Started
 
 Requirement:
