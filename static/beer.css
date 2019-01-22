@@ -1,0 +1,39 @@
+#header {
+    width: 100%;
+    background-color: lightblue;
+    /* height: 30px; */
+    font-family:sans-serif;
+    font-size: 35px;
+}
+
+#first {
+    width: 500px;
+    float: left;
+    height: 500px;
+    /* background-color: blue; */
+}
+
+#second {
+    width: 350px;
+    float: left;
+    height: 500px;
+    /* background-color: green; */
+}
+
+#clear {
+    clear: both;
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
+h2 {
+    color: navy;
+    margin-left: 20px;
+    text-align: center;
+}
+
+body {
+  font: 20px sans-serif;
+}
